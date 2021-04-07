@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{name}}</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script src="../static/bootstrap/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="../static/bootstrap/jquery-3.6.0.slim.min.js"></script>
+	<script src="../static/bootstrap/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 	<script src="../static/bootstrap/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Category -->
+<div class="list">
+	<div class="row col-lg col-md col-sm" style="height: 15px">
+		
+	</div>
+	
+</div>
+
+<!-- <button type="button" class="btn btn-success">Success</button> -->
+</div>
+</body>
+<script type="text/javascript">
+var name = '{{name}}'
+$( document ).ready(function() {
+	var response
+	var data = JSON.stringify({
+	  "name":name});
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    response = JSON.parse(this.response)
+	    console.log(response);
+	    for (var key in response) {
+
+	    $('.list').append('<div class="card">\
+	    	<a href="./'+name+'/'+key+'">\
+				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
+				  <span align="right"><span>'+response[key]['experience']+'</span>'+response[key]['location']+'</span>\
+				  <div class="card-body">\
+				    <p class="card-text">'+response[key]['descriptionTeaser']+'</p>\
+				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
+				  </div>\
+				</div><br>');
+	 
+		    
+		}
+	  }
+	});
+	xhr.open("POST", "/getjobData");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	// xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
+	xhr.send(data);
+	
+	// appending list data of jobs
+
+
+
+});
+
+	// $on
+</script>
+
+
+</html>

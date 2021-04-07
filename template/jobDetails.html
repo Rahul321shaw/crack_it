@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{name}}</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script src="/static/bootstrap/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="/static/bootstrap/jquery-3.6.0.slim.min.js"></script>
+	<script src="/static/bootstrap/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 	<script src="/static/bootstrap/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+		
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<!-- Category -->
+<div class="jobDetails">
+	<div class="row col-lg col-md col-sm" style="height: 15px"></div>
+	<div class="row"><div class="col-sm" id="heading"></div></div><br><br>
+	<div class="row"><div class="col-sm" id="jobTitle"></div></div>
+	<div class="row"><div class="col-sm" id="jobLocation"></div></div>
+	<div class="row"><div class="col-sm" id="jobexperience"></div></div>
+	<div class="row"><div class="col-sm" id="jobBody"></div></div>
+	<div class="row applyButton"></div>
+	
+	
+</div>
+
+<!-- <button type="button" class="btn btn-success">Success</button> -->
+</div>
+</body>
+<script type="text/javascript">
+var name = '{{jobId|tojson}}'
+data = JSON.parse(name.slice(1,name.length-1))
+var pathname = window.location.pathname;
+var heading = pathname.split('/')[3].split('-')[0][0].toUpperCase(0) + pathname.split('/')[3].split('-')[0].substring(1)
+console.log(data)
+$('#heading').append('<h3>'+heading+' Recruitment 2021 For '+data['title']+'</h3>')
+$('#jobTitle').append('<h5><strong>Job Title - </strong>'+data['title']+'</h5>')
+$('#jobLocation').append('<h5><strong>Location - </strong>'+data['location']+'</h5>')
+$('#jobexperience').append('<h5>Experience - <span>'+data['experience']+'</span></h5>')
+$('#jobBody').append(decodeEntities(data["description1"]))
+$('.applyButton').append('<a href="'+data["urlLink"]+'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Apply </a>')
+
+function decodeEntities(encodedString) {
+  var textArea = document.createElement('textarea');
+  textArea.innerHTML = encodedString;
+  return textArea.value;
+}
+
+	// document.getElementsByClassName('title').innerHTML = "hgjkhk"
+$( document ).ready(function() {
+
+	// $('.title').innerText= data['title']
+	// var data = JSON.stringify({
+	//   "name":name});
+	// var xhr = new XMLHttpRequest();
+	// xhr.withCredentials = true;
+	// xhr.addEventListener("readystatechange", function () {
+	//   if (this.readyState === 4) {
+	//     response = JSON.parse(this.response)
+	//     console.log(response);
+	    
+	//   }
+	// });
+	// xhr.open("POST", "/getjobData");
+	// xhr.setRequestHeader("content-type", "application/json");
+	// xhr.setRequestHeader("cache-control", "no-cache");
+	// // xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
+	// xhr.send(data);
+	
+	// // appending list data of jobs
+
+
+
+});
+
+// var data = null;
+
+// var xhr = new XMLHttpRequest();
+// xhr.withCredentials = true;
+
+// xhr.addEventListener("readystatechange", function () {
+//   if (this.readyState === 4) {
+//     console.log(this.responseText);
+//   }
+// });
+
+// xhr.open("GET", "https://careers.cognizant.com/professionals/in/en/job/00036970653/Sr-Associate-Projects");
+// xhr.setRequestHeader("cache-control", "no-cache");
+// xhr.setRequestHeader("postman-token", "1694e826-df16-1d6b-4697-1269044ff060");
+
+// xhr.send(data);
+
+	// $on
+</script>
+
+
+</html>

@@ -43,38 +43,38 @@
 <script type="text/javascript">
 var name = '{{name}}'
 $( document ).ready(function() {
-	var response
-	var data = JSON.stringify({
-	  "name":name});
-	var xhr = new XMLHttpRequest();
-	xhr.withCredentials = true;
-	xhr.addEventListener("readystatechange", function () {
-	  if (this.readyState === 4) {
-	    response = JSON.parse(this.response)
-	    console.log(response);
-	    for (var key in response) {
+	// var response
+	// var data = JSON.stringify({
+	//   "name":name});
+	// var xhr = new XMLHttpRequest();
+	// xhr.withCredentials = true;
+	// xhr.addEventListener("readystatechange", function () {
+	//   if (this.readyState === 4) {
+	//     response = JSON.parse(this.response)
+	//     console.log(response);
+	//     for (var key in response) {
 
-	    $('.list').append('<div class="card">\
-	    	<a href="./'+name+'/'+key+'">\
-				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
-				  <span align="right"><span>'+response[key]['experience']+'</span>'+response[key]['location']+'</span>\
-				  <div class="card-body">\
-				    <p class="card-text">'+response[key]['descriptionTeaser']+'</p>\
-				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
-				  </div>\
-				</div><br>');
+	//     $('.list').append('<div class="card">\
+	//     	<a href="./'+name+'/'+key+'">\
+	// 			  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
+	// 			  <span align="right"><span>'+response[key]['experience']+'</span>'+response[key]['location']+'</span>\
+	// 			  <div class="card-body">\
+	// 			    <p class="card-text">'+response[key]['descriptionTeaser']+'</p>\
+	// 			    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
+	// 			  </div>\
+	// 			</div><br>');
 	 
 		    
-		}
-	  }
-	});
-	xhr.open("POST", "/getjobData");
-	xhr.setRequestHeader("content-type", "application/json");
-	xhr.setRequestHeader("cache-control", "no-cache");
-	// xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
-	xhr.send(data);
+	// 	}
+	//   }
+	// });
+	// xhr.open("POST", "/getjobData");
+	// xhr.setRequestHeader("content-type", "application/json");
+	// xhr.setRequestHeader("cache-control", "no-cache");
+	// // xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
+	// xhr.send(data);
 	
-	// appending list data of jobs
+	// // appending list data of jobs
 
 
 
@@ -82,6 +82,6 @@ $( document ).ready(function() {
 
 	// $on
 </script>
-
+<script type="text/javascript" src="/static/js/{{name}}.js"></script>
 
 </html>

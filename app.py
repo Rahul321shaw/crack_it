@@ -38,7 +38,7 @@ def jobDetails(company,jobId):
       # print(e)
       data = {}
   # print(data)
-  return render_template('jobDetails.html', jobId=json.dumps(data))
+  return render_template('jobDetails.html', jobId=json.dumps(data),company=company)
 
 def error():
   return "404"

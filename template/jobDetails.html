@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{name}}</title>
+	<title>{{company}}</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -46,69 +46,15 @@
 </div>
 </body>
 <script type="text/javascript">
-var name = '{{jobId|tojson}}'
+	var name = '{{jobId|tojson}}'
 data = JSON.parse(name.slice(1,name.length-1))
 var pathname = window.location.pathname;
 var heading = pathname.split('/')[3].split('-')[0][0].toUpperCase(0) + pathname.split('/')[3].split('-')[0].substring(1)
 console.log(data)
-$('#heading').append('<h3>'+heading+' Recruitment 2021 For '+data['title']+'</h3>')
-$('#jobTitle').append('<h5><strong>Job Title - </strong>'+data['title']+'</h5>')
-$('#jobLocation').append('<h5><strong>Location - </strong>'+data['location']+'</h5>')
-$('#jobexperience').append('<h5>Experience - <span>'+data['experience']+'</span></h5>')
-$('#jobBody').append(decodeEntities(data["description1"]))
-$('.applyButton').append('<a href="'+data["urlLink"]+'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Apply </a>')
-
-function decodeEntities(encodedString) {
-  var textArea = document.createElement('textarea');
-  textArea.innerHTML = encodedString;
-  return textArea.value;
-}
-
-	// document.getElementsByClassName('title').innerHTML = "hgjkhk"
-$( document ).ready(function() {
-
-	// $('.title').innerText= data['title']
-	// var data = JSON.stringify({
-	//   "name":name});
-	// var xhr = new XMLHttpRequest();
-	// xhr.withCredentials = true;
-	// xhr.addEventListener("readystatechange", function () {
-	//   if (this.readyState === 4) {
-	//     response = JSON.parse(this.response)
-	//     console.log(response);
-	    
-	//   }
-	// });
-	// xhr.open("POST", "/getjobData");
-	// xhr.setRequestHeader("content-type", "application/json");
-	// xhr.setRequestHeader("cache-control", "no-cache");
-	// // xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
-	// xhr.send(data);
-	
-	// // appending list data of jobs
+</script>
+<script type="text/javascript" src="/static/js/{{company}}.js"></script>
 
 
-
-});
-
-// var data = null;
-
-// var xhr = new XMLHttpRequest();
-// xhr.withCredentials = true;
-
-// xhr.addEventListener("readystatechange", function () {
-//   if (this.readyState === 4) {
-//     console.log(this.responseText);
-//   }
-// });
-
-// xhr.open("GET", "https://careers.cognizant.com/professionals/in/en/job/00036970653/Sr-Associate-Projects");
-// xhr.setRequestHeader("cache-control", "no-cache");
-// xhr.setRequestHeader("postman-token", "1694e826-df16-1d6b-4697-1269044ff060");
-
-// xhr.send(data);
-
-	// $on
 </script>
 
 

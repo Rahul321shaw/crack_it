@@ -30,7 +30,7 @@ def getjobData():
 
 @app.route("/companies/<company>/<jobId>",methods = ["GET"])
 def jobDetails(company,jobId):
-  fileName = '/Json_data/' + company + '/job_data.json'
+  fileName = './Json_data/' + company + '/job_data.json'
   with open(fileName, 'r', encoding='utf-8') as f:
     try :
       data = json.load(f)[jobId]

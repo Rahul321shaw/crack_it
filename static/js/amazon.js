@@ -14,7 +14,7 @@ if(window.location.pathname.split('/').length == 3){
 	    $('.list').append('<div class="card">\
 	    	<a href="./'+name+'/'+key+'">\
 				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
-				  <span align="right"><span>'+response[key]['posted_date']+'</span>  /'+response[key]['location']+'</span>\
+				  <span align="right"> <strong>Posted -</strong><i>'+response[key]['posted_date']+'</i>, <strong>Location -</strong> '+response[key]['location']+' </span>\
 				  <div class="card-body">\
 				    <p class="card-text">'+response[key]['description_short']+'</p>\
 				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\

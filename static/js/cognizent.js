@@ -9,15 +9,23 @@ if(window.location.pathname.split('/').length == 3){
 	  if (this.readyState === 4) {
 	    response = JSON.parse(this.response)
 	    console.log(response);
+	    var el = document.createElement( 'html' );
 	    for (var key in response) {
+	    el.innerHTML = decodeEntities(response[key]["description1"])
+	    var qualification = el.getElementsByTagName("div")[0].textContent.split("Qualification:")[1].split("Responsibility:")[0]
 
 	    $('.list').append('<div class="card">\
 	    	<a href="./'+name+'/'+key+'">\
 				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
-				  <span align="right"><span>'+response[key]['experience']+'</span>'+response[key]['location']+'</span>\
+				  <span align="" style="margin-left:20px;">\
+				  	<strong>Posted - </strong>'+response[key]['postedDate'].split("T")[0]+
+				  	'<br><strong> Experience - </strong>'+response[key]['experience']+
+				  	'<br><strong> Location - </strong>'+response[key]['location']+
+				  	'<br><strong> Qualification - </strong>'+qualification+
+				  '</span>\
 				  <div class="card-body">\
 				    <p class="card-text">'+response[key]['descriptionTeaser']+'</p>\
-				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
+				    <a href="./'+name+'/'+key+'" class="btn btn-dark">View</a>\
 				  </div>\
 				</div><br>');
 	 
@@ -30,6 +38,7 @@ if(window.location.pathname.split('/').length == 3){
 	xhr.setRequestHeader("cache-control", "no-cache");
 	// xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
 	xhr.send(data);
+
 
 }
 
@@ -48,9 +57,11 @@ if (window.location.pathname.split('/').length == 4) {
 	$('#jobBody').append(decodeEntities(data["description1"]))
 	$('.applyButton').append('<a href="'+data["urlLink"]+'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Apply </a>')
 
+}
+
+
 	function decodeEntities(encodedString) {
 	  var textArea = document.createElement('textarea');
 	  textArea.innerHTML = encodedString;
 	  return textArea.value;
 	}
-}

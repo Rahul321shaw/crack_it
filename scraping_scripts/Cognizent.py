@@ -1,5 +1,5 @@
 import json
-
+import html
 import requests
 from bs4 import BeautifulSoup
 
@@ -52,6 +52,11 @@ for categorys in category:
         parsedData = json.loads(soup.find_all('script')[1].contents[0])
         # parsedData['description']
         job.update({'description1': parsedData['description']})
+        str = html.unescape(parsedData['description'])
+        strSoup = BeautifulSoup(str, 'html.parser')
+        job.update({'Qualification': strSoup.find("div").contents[2]})
+
+
         print(href)
 
         # print(href)

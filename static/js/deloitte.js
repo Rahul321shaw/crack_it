@@ -14,10 +14,12 @@ if(window.location.pathname.split('/').length == 3){
 	    $('.list').append('<div class="card">\
 	    	<a href="./'+name+'/'+key+'">\
 				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
-				  <span align="right"><span>'+response[key]['experience']+'</span>'+response[key]['location']+'</span>\
+				  <span align="right"><strong>Posted - </strong><i>'+response[key]['postedDate'].split("T")[0]+',</i>\
+				   <strong>Location - </strong><i>'+response[key]['location']+'</i>\
+				   </span>\
 				  <div class="card-body">\
 				    <p class="card-text">'+response[key]['descriptionTeaser']+'</p>\
-				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
+				    <a href="./'+name+'/'+key+'" class="btn btn-dark">View</a>\
 				  </div>\
 				</div><br>');
 	 
@@ -44,8 +46,9 @@ if (window.location.pathname.split('/').length == 4) {
 	$('#heading').append('<h3>'+heading+' Recruitment 2021 For '+data['title']+'</h3>')
 	$('#jobTitle').append('<h5><strong>Job Title - </strong>'+data['title']+'</h5>')
 	$('#jobLocation').append('<h5><strong>Location - </strong>'+data['location']+'</h5>')
-	$('#jobexperience').append('<h5>Experience - <span>'+data['experience']+'</span></h5>')
-	$('#jobBody').append(decodeEntities(data["description1"]))
+	$('#jobexperience').append('<h5>Deatils -</h5>')
+	$('#jobBody').append(decodeEntities(data["actualDescription"].split("How you’ll grow")[0]))
+	$("#headerText").remove()
 	$('.applyButton').append('<a href="'+data["urlLink"]+'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Apply </a>')
 
 	function decodeEntities(encodedString) {

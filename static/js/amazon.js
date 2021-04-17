@@ -17,7 +17,7 @@ if(window.location.pathname.split('/').length == 3){
 				  <span align="right"> <strong>Posted -</strong><i>'+response[key]['posted_date']+'</i>, <strong>Location -</strong> '+response[key]['location']+' </span>\
 				  <div class="card-body">\
 				    <p class="card-text">'+response[key]['description_short']+'</p>\
-				    <a href="./'+name+'/'+key+'" class="btn btn-dark">Apply</a>\
+				    <a href="./'+name+'/'+key+'" class="btn btn-dark">View</a>\
 				  </div>\
 				</div><br>');
 	 
@@ -47,8 +47,9 @@ if (window.location.pathname.split('/').length == 4) {
 	$('#heading').append('<h3>'+heading+' Recruitment 2021 For '+data['title']+'</h3>')
 	$('#jobTitle').append('<h5><strong>Job Title - </strong>'+data['title']+'</h5>')
 	$('#jobLocation').append('<h5><strong>Location - </strong>'+data['location']+'</h5>')
-	$('#jobexperience').append('<h5>Experience - <span>'+data['experience']+'</span></h5>')
-	$('#jobBody').append(decodeEntities(data["description1"]))
+	$('#jobexperience').append('<h5><strong>Basic Qualifications</strong></h5>')
+	$('#jobBody').append(decodeEntities(data["basic_qualifications"])+"<br><strong>Preferred Qualifications</strong><br>"+decodeEntities(data["preferred_qualifications"]))
+	$('#jobBody').append()
 	$('.applyButton').append('<a href="'+data["urlLink"]+'" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> Apply </a>')
 
 	function decodeEntities(encodedString) {

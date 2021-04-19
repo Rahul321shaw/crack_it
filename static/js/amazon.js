@@ -1,8 +1,9 @@
 //--------------jobList javaScript--------------------------------------------------------------------
-if(window.location.pathname.split('/').length == 3){
+if(window.location.pathname.split('/').length == 3 && window.location.pathname.split('/')[1] !='freshers'){
 	var response
 	var data = JSON.stringify({
-	  "name":name});
+	  "name":name,
+		"level":level});
 	var xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
 	xhr.addEventListener("readystatechange", function () {
@@ -34,6 +35,44 @@ if(window.location.pathname.split('/').length == 3){
 	// appending list data of jobs
 
 }
+//-------------------freshers-----------------
+if(window.location.pathname.split('/').length == 3 && window.location.pathname.split('/')[1] =='freshers'){
+	var response
+	var data = JSON.stringify({
+	  "name":name,
+		"level":level});
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    response = JSON.parse(this.response)
+	    console.log(response);
+	    for (var key in response) {
+
+	    $('.list').append('<div class="card">\
+	    	<a href="./'+name+'/'+key+'">\
+				  <h5 class="card-header">'+response[key]['title']+'</h5></a>\
+				  <span align="right"> <strong>Posted -</strong><i>'+response[key]['posted_date']+'</i>, <strong>Location -</strong> '+response[key]['location']+' </span>\
+				  <div class="card-body">\
+				    <p class="card-text">'+response[key]['description_short']+'</p>\
+				    <a href="./'+level+'/'+name+'" class="btn btn-dark">View</a>\
+				  </div>\
+				</div><br>');
+	 
+		    
+		}
+	  }
+	});
+	xhr.open("POST", "/getjobData");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	// xhr.setRequestHeader("postman-token", "da179bdb-fc5a-9b6c-aa30-fffa130ffb2a");
+	xhr.send(data);
+	
+	// appending list data of jobs
+
+}
+
 
 //--------------jobDetails javaScript--------------------------------------------------------------------
 if (window.location.pathname.split('/').length == 4) {

@@ -2,7 +2,8 @@
 if(window.location.pathname.split('/').length == 3){
 	var response
 	var data = JSON.stringify({
-	  "name":name});
+	  "name":name,
+		"level":level});
 	var xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
 	xhr.addEventListener("readystatechange", function () {
